@@ -8,6 +8,7 @@ body{
   color: black;
   background-image: url(../images/site/small_check.jpg);
   background-repeat:repeat-x;
+  font-family: "Roboto", serif;
   
 }
 header{
@@ -16,10 +17,9 @@ header{
   justify-content: space-between;
 }
 
-header h1{
-  font-size: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- margin-left: 2%;
+header h2{
+font-size: 30px;
+margin-left: 30px;
 }
 
 header a{
@@ -69,6 +69,11 @@ main{
   
 }
 
+.upgrades h2{
+  margin-left: 15px;
+  
+}
+
 .upgrade-item{
   display: flex;
   flex-direction: column;
@@ -86,6 +91,10 @@ main{
   margin: 0 auto;
 }
 
+.upgrade-item span img{
+ margin-top: 10px;
+}
+
 .banner{
   background-image: url(../images/vehicles/delorean.jpg);
   background-repeat: no-repeat;
@@ -94,8 +103,8 @@ main{
 }
 
 .banner h1{
-  margin-left: 5%;
-  font-family: sans-serif;
+  margin-left: 2%;
+
 }
 
 .reviews p{
@@ -112,7 +121,7 @@ main{
   width: 24%;
   height: auto;
 }
-.side-bar h1{
+.side-bar h2{
   margin-left: 0;
 }
 
