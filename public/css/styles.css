@@ -4,3 +4,185 @@
 *:after {
   box-sizing: border-box;
 }
+body{
+  color: black;
+  background-image: url(/cse340/public/images/site/small_check.jpg);
+  background-repeat:repeat-x;
+  
+}
+header{
+
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1{
+  font-size: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ margin-left: 2%;
+}
+
+header a{
+  font-size: larger;
+  margin-top: 2%;
+  margin-right: 5%;
+  text-decoration: none;
+  color: gray;
+  
+ }
+
+ nav{
+  background-color: rgb(51, 51, 51);
+ text-align: center;
+ padding: 15px;
+
+
+ }
+
+ nav a{
+  font-size: x-large;
+  text-decoration: none;
+  color: white;
+  padding-right: 10%;
+ }
+
+main{
+  background-color: white;
+  border: 5px solid rgb(37, 157, 255);
+  border-radius: 6px;
+  margin: 0 8%;
+}
+
+.information-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.upgrades{
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.upgrades-session{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.upgrade-item{
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  margin-left: 10px
+ 
+}
+.upgrade-item span{
+  width: 200px;
+  height: 100px;
+  background-color:rgb(37, 157, 255); 
+  margin: 0 auto;
+}
+
+.banner{
+  background-image: url(/cse340/public/images/vehicles/delorean.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 5%;
+}
+
+.banner h1{
+  margin-left: 5%;
+  font-family: sans-serif;
+}
+
+.reviews p{
+  font-size:x-large;
+
+}
+
+
+
+.side-bar{
+  padding-left: 5%;
+  background-color:rgba(37, 157, 255, 0.2);
+  color: rgb(37, 157, 255);
+  width: 24%;
+  height: auto;
+}
+.side-bar h1{
+  margin-left: 0;
+}
+
+.side-bar button{
+  background-color:rgb(37, 157, 255); 
+  width: 80%;
+  padding: 5%;
+  border: 0;
+  
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  body{
+    background-image: none;
+  }
+  main{
+    width:100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  nav a{
+
+    font-size: medium;
+    padding-right: 5%;
+    
+  }
+  nav{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .side-bar{
+    width: 50%;
+    height: 40%;
+    background-color:rgba(255, 254, 254, 0.5);
+
+
+  }
+  .banner{
+    background-image: url(/cse340/public/images/vehicles/delorean-tn.jpg);
+  }
+  .banner img{
+    background-size: 30%;
+    
+
+  }
+
+  .information-box{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .information-box{
+   
+    grid-template-rows: 1fr 1fr;
+  }
+  .reviews{
+    grid-row-start: 1;
+  }
+
+  .upgrade-item span{
+    width: 120px;
+    height: 80px;
+  }
+  .upgrade-item{
+    
+    margin-right: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+   
+  }
+}
