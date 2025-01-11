@@ -6,7 +6,7 @@
 }
 body{
   color: black;
-  background-image: url(/cse340/public/images/site/small_check.jpg);
+  background-image: url(../images/site/small_check.jpg);
   background-repeat:repeat-x;
   
 }
@@ -87,7 +87,7 @@ main{
 }
 
 .banner{
-  background-image: url(/cse340/public/images/vehicles/delorean.jpg);
+  background-image: url(../images/vehicles/delorean.jpg);
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 5%;
@@ -153,7 +153,7 @@ main{
 
   }
   .banner{
-    background-image: url(/cse340/public/images/vehicles/delorean-tn.jpg);
+    background-image: url(../images/vehicles/delorean-tn.jpg);
   }
   .banner img{
     background-size: 30%;
