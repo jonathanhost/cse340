@@ -27,7 +27,7 @@ header a{
   margin-top: 2%;
   margin-right: 5%;
   text-decoration: none;
-  color: gray;
+  color: rgb(29, 29, 29);
   
  }
 
@@ -117,7 +117,7 @@ main{
 .side-bar{
   padding-left: 5%;
   background-color:rgba(37, 157, 255, 0.2);
-  color: rgb(37, 157, 255);
+  color: rgb(12, 62, 102);
   width: 24%;
   height: auto;
 }
