@@ -38,6 +38,14 @@ header a{
 
 
  }
+ nav ul {
+  list-style-type: none;
+  display: flex;
+  
+ }
+ nav li{
+  padding-right: 10%;
+ }
 
  nav a{
   font-size: x-large;
