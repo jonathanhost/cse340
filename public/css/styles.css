@@ -110,10 +110,7 @@ main{
   padding-top: 5%;
 }
 
-.banner h1{
-  margin-left: 2%;
 
-}
 
 .reviews p{
   font-size:x-large;
@@ -203,3 +200,20 @@ main{
    
   }
 }
+
+#inv-display{
+ display: flex;
+ list-style: none;
+ flex-wrap: wrap;
+}
+#inv-display li{
+  padding-right: 10%;
+ }
+
+.namePrice a{
+  color: rgb(41, 87, 124);
+ }
+
+ h1{
+  padding-left: 5%;
+ }
