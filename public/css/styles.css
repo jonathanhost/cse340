@@ -206,8 +206,17 @@ main{
  list-style: none;
  flex-wrap: wrap;
 }
+
+#inv-display img{
+  max-width: 150px;
+  max-height: 150px;
+
+}
 #inv-display li{
+  padding-bottom: 5%;
+  max-width: 30%;
   padding-right: 10%;
+ 
  }
 
 .namePrice a{
@@ -217,3 +226,14 @@ main{
  h1{
   padding-left: 5%;
  }
+
+ #car-display{
+ display: flex;
+ }
+
+ .car-image{
+  margin-top: 5%;
+  margin-right: 10%;
+
+ }
+ 
