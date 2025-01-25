@@ -45,6 +45,7 @@ app.use(async (req, res, next) => {
   next(err); // Encaminha o erro para o middleware de erro geral
 });
 
+
 /* ***********************
  * Middleware de Erro Geral
  *************************/
@@ -58,6 +59,8 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
+
 
 
 

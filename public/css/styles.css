@@ -196,7 +196,10 @@ main{
   font-size: 20em;
   text-align: center;
  }
-
+ .notice{
+  text-align: center;
+  font-size: xx-large;
+ }
 
  @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -210,11 +213,10 @@ main{
     border: 0;
   }
   nav ul{
-    max-width: fit-content;
+    width: 50%;
     font-size: small;
-    padding-right: 5%;
-    display: block;
-    margin: 0 auto;
+    display: flex;
+    
     
   }
   nav{
@@ -271,5 +273,13 @@ main{
       max-width: 100%;
       }
      
-   
+  #inv-display {
+   flex-wrap: wrap;
+
+  }
+  #inv-display li{
+    margin: 5%;
+ 
+   }
+ 
 }
