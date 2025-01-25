@@ -138,7 +138,67 @@ main{
   
 }
 
-@media only screen and (max-width: 768px) {
+
+
+#inv-display{
+ display: flex;
+ list-style: none;
+ flex-wrap: wrap;
+}
+
+#inv-display img{
+  max-width: 150px;
+  max-height: 150px;
+
+}
+#inv-display li{
+  padding-bottom: 5%;
+  max-width: 30%;
+  padding-right: 10%;
+ 
+ }
+
+.namePrice a{
+  color: rgb(41, 87, 124);
+ }
+
+ h1{
+  padding-left: 5%;
+ }
+
+ #car-display{
+ display: flex;
+ }
+
+ .details{
+  font-size: x-large;
+ }
+
+ .car-image{
+  margin-top: 5%;
+  margin-right: 10%;
+
+ }
+ 
+
+ .error-page{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-image: url('../images/site/error-page.jpg');
+  background-size: cover;
+  height: 800px;
+ }
+
+ #error-title{
+  padding: 0;
+  margin: 0;
+  font-size: 20em;
+  text-align: center;
+ }
+
+
+ @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   body{
     background-image: none;
@@ -149,15 +209,18 @@ main{
     margin: 0;
     border: 0;
   }
-  nav a{
-
-    font-size: medium;
+  nav ul{
+    max-width: fit-content;
+    font-size: small;
     padding-right: 5%;
+    display: block;
+    margin: 0 auto;
     
   }
   nav{
     padding-top: 10px;
     padding-bottom: 10px;
+  
   }
   .side-bar{
     width: 50%;
@@ -199,41 +262,14 @@ main{
     margin-left: 20px;
    
   }
+
+  #car-display{
+    display: block;
+    }
+
+    #car-display img{
+      max-width: 100%;
+      }
+     
+   
 }
-
-#inv-display{
- display: flex;
- list-style: none;
- flex-wrap: wrap;
-}
-
-#inv-display img{
-  max-width: 150px;
-  max-height: 150px;
-
-}
-#inv-display li{
-  padding-bottom: 5%;
-  max-width: 30%;
-  padding-right: 10%;
- 
- }
-
-.namePrice a{
-  color: rgb(41, 87, 124);
- }
-
- h1{
-  padding-left: 5%;
- }
-
- #car-display{
- display: flex;
- }
-
- .car-image{
-  margin-top: 5%;
-  margin-right: 10%;
-
- }
- 
