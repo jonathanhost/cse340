@@ -73,7 +73,6 @@ Util.buildCarPage = async function(data) {
                   + ' details"><img src="' + vehicle.inv_image 
                   + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model 
                   + ' on CSE Motors" /></a>';
-              grid += '<hr />';
               grid += '</div>';
               grid += '<div>';
               grid += '<h1>' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>';
