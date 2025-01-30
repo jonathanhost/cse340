@@ -6,38 +6,75 @@
 /* ***********************
  * Require Statements
  *************************/
-const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
-const env = require("dotenv").config();
+const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
+const flash = require("connect-flash");
+const expressMessages = require("express-messages");
+const dotenv = require("dotenv").config();
 const app = express();
+const pool = require('./database/');
+const utilities = require("./utilities/");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
-const utilities = require("./utilities/");
+const bodyParser = require("body-parser");
+
 /* ***********************
- * EJS
+ * EJS Configuration
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // layout.ejs na pasta layouts
 
-// Configuração para arquivos estáticos (CSS, JS, etc.)
-app.use(express.static("public"));
-app.get("/", utilities.handleErrors(baseController.buildHome))
 /* ***********************
- * Rotas
+ * Static Files
  *************************/
+app.use(express.static("public"));
 
-// Rota para arquivos estáticos
+/* ***********************
+ * Session and Flash
+ *************************/
+app.use(
+  session({
+    store: new (require("connect-pg-simple")(session))({
+      createTableIfMissing: true,
+      pool,
+    }),
+    secret: process.env.SESSION_SECRET || "default_secret", // Use valor padrão se não estiver no .env
+    resave: false,
+    saveUninitialized: true,
+    name: "sessionId",
+  })
+);
+app.use(flash());
+
+// Middleware para disponibilizar mensagens flash às views
+app.use((req, res, next) => {
+  res.locals.messages = expressMessages(req, res); // Adiciona messages() às views
+  next();
+});
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+/* ***********************
+ * Routes
+ *************************/
+// Página inicial
+app.get("/", utilities.handleErrors(baseController.buildHome));
+app.use("/account", require("./routes/accountRoute"))
+// Rotas estáticas
 app.use(require("./routes/static"));
-
-// Rota para a página inicial
-app.get("/", baseController.buildHome);
 
 // Rotas de inventário
 app.use("/inv", inventoryRoute);
 
-// Middleware para capturar erros 404 (página não encontrada)
-app.use(async (req, res, next) => {
+
+/* ***********************
+ * Error Handling
+ *************************/
+// Erro 404 - Página não encontrada
+app.use((req, res, next) => {
   const err = {
     status: 404,
     message: "Sorry, we appear to have lost that page.",
@@ -45,35 +82,27 @@ app.use(async (req, res, next) => {
   next(err); // Encaminha o erro para o middleware de erro geral
 });
 
-
-/* ***********************
- * Middleware de Erro Geral
- *************************/
+// Middleware de erro geral
 app.use(async (err, req, res, next) => {
-  let nav = await utilities.getNav()
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
-  res.render("errors/error", {
-    title: err.status || 'Server Error',
+  let nav = await utilities.getNav();
+  console.error(`Error at "${req.originalUrl}": ${err.message}`);
+  const message =
+    err.status === 404
+      ? err.message
+      : "Oh no! There was a crash. Maybe try a different route?";
+  res.status(err.status || 500).render("errors/error", {
+    title: err.status || "Server Error",
     message,
-    nav
-  })
-})
-
-
-
-
+    nav,
+  });
+});
 
 /* ***********************
- * Configuração do Servidor
- * Local Server Information
- * Values from .env (environment) file
+ * Server Configuration
  *************************/
-const port = process.env.PORT
-const host = process.env.HOST
-/* ***********************
- * Log statement to confirm server operation
- *************************/
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || "localhost";
+
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
-})
+  console.log(`App listening on ${host}:${port}`);
+});

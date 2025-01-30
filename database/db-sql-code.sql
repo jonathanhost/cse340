@@ -1,5 +1,5 @@
 CREATE TYPE public.account_type AS ENUM
-    ('client', 'employee', 'admin');
+    ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
     OWNER TO dbtest;
