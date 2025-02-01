@@ -353,3 +353,44 @@ input:required:invalid, input:focus:invalid {
  input:required:valid {
   border-color: green;
  }
+
+
+ .management{
+display: flex;
+  font-size: larger;
+  list-style: none;
+  text-align: center;
+ 
+
+ }
+
+ .management a {
+  padding: 5%;
+ margin: 10%;
+  border: 1px gray solid;
+  border-radius: 3px;
+
+ }
+
+ .management :hover {
+  background-color: rgb(37, 157, 255); 
+
+ }
+
+ .notice{
+  list-style: none;
+ }
+
+ select{
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+ }
+
+ .error-messages{
+  font-size:medium;
+  color: red;
+  list-style: none;
+ }
