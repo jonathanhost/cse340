@@ -18,6 +18,7 @@ const utilities = require("./utilities/");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * EJS Configuration
@@ -68,7 +69,8 @@ app.use(require("./routes/static"));
 
 // Rotas de inventário
 app.use("/inv", inventoryRoute);
-
+app.use(cookieParser());
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * Error Handling
