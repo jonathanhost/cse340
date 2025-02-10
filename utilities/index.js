@@ -126,6 +126,7 @@ Util.buildClassificationList = async function (classification_id = null) {
 * Middleware to check token validity
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
+  console.log('entrou')
   if (req.cookies.jwt) {
    jwt.verify(
     req.cookies.jwt,
@@ -146,6 +147,7 @@ Util.checkJWTToken = (req, res, next) => {
  }
  
  Util.checkLogin = (req, res, next) => {
+  console.log("Valor de res.locals.loggedin:", res.locals.loggedin);
   if (res.locals.loggedin) {
     next()
   } else {
