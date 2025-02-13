@@ -1,0 +1,59 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+    <h1>Default Title</h1> <!-- Título padrão para evitar erros -->
+<% } %>
+
+<p><%- messages() %></p>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+<div class="edit-account">
+    <div class="form-container">
+        <form action="/account/update/" method="POST" class="registerform-">
+            <div class="form-group">
+                <label for="account_firstname">First Name:</label>
+                <input type="text" id="account_firstname" name="account_firstname" required value="<%= account_firstname %>">
+            </div>
+            <div class="form-group">
+                <label for="account_lastname">Last Name:</label>
+                <input type="text" id="account_lastname" name="account_lastname" required value="<%= account_lastname %>">
+            </div>
+            <div class="form-group">
+                <label for="account_email">Email:</label>
+                <input type="email" id="account_email" name="account_email" required value="<%= account_email %>">
+            </div>
+            <button id="updateAccount" type="submit">Update</button>
+            <% if (locals.account_id) { %>
+                <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+            <% } %>
+                <input type="hidden" name="current_email" value="<%= locals.account_email %>">
+
+        </form>
+    </div>
+</div>
+
+<h2>Update Password</h2>
+<p>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter, and 1 special character.</p>
+<p>Your original password will be changed.</p>
+
+<div class="edit-account">
+    <div class="form-container">
+        <form action="/account/update-password" method="POST" class="registerform-">
+            <div class="form-group">
+                <label for="">Password:</label>
+                <input type="password" id="account_password" name="account_password" required placeholder="********************">
+            </div>
+            <button id="updateAccount" type="submit">Change Password</button>
+            <% if (locals.account_id) { %>
+                <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+            <% } %>
+                <input type="hidden" name="account_firstname" value="<%= locals.account_firstname %>">
+
+        </form>
+    </div>
+</div>

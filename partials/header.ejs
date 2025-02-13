@@ -1,6 +1,17 @@
 <header>
     <h2>CSE MOTORS</h2>
-    <a href="/account/login"> My Account</a>
+
+    <% if (loggedin) { %>
+        <div class="header-links">
+            <a href="/account/">Wellcome  <%- accountData.account_firstname %></a>
+            <h3></h3>
+            <a href="/account/logout">Logout</a>
+        </div>
+        
+        
+    <% } else { %>
+        <a href="/account/login">My Account</a>
+    <% } %>
 </header>
 
 <nav>

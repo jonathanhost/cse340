@@ -21,6 +21,23 @@ router.post(
     utilities.handleErrors(accountController.accountLogin)
   )
 
-  router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildaccountManagement))
+  router.get("/update/:account_id", utilities.checkLogin,accountController.buildUpdateById);
 
+  router.post(
+    "/update",
+    regValidate.updateRules(),
+    regValidate.checkUpdateData,
+    utilities.handleErrors(accountController.updateAccount)
+  )
+
+  router.post(
+    "/update-password",
+    regValidate.passwordUpdate(),
+    regValidate.checkUpdatePassword,
+    utilities.handleErrors(accountController.updatePassword)
+
+  )
+
+  router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildaccountManagement))
+  router.get("/logout", utilities.handleErrors(accountController.logout))
 module.exports = router;

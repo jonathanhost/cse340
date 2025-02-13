@@ -32,6 +32,7 @@ app.set("layout", "./layouts/layout"); // layout.ejs na pasta layouts
  *************************/
 app.use(express.static("public"));
 
+
 /* ***********************
  * Session and Flash
  *************************/

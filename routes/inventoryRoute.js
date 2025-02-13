@@ -7,10 +7,10 @@ const regValidatevehicle = require('../utilities/vehicle-validation')
 
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
-router.get("/detail/:cardid", invController.buildByCarId);
-router.get("/", invController.buildinvpage);
-router.get("/add-classification", utilities.handleErrors(invController.buildaddClassification));
+router.get("/type/:classificationId", invController.accountType, invController.buildByClassificationId);
+router.get("/detail/:cardid",invController.accountType, invController.buildByCarId);
+router.get("/", invController.accountType,invController.buildinvpage);
+router.get("/add-classification", invController.accountType, utilities.handleErrors(invController.buildaddClassification));
 router.post(
     "/add-classification",
     regValidate.registationRules(),
@@ -18,7 +18,7 @@ router.post(
     utilities.handleErrors(invController.registerClassification)
   )
 
-  router.get("/add-vehicle", utilities.handleErrors(invController.buildaddVehicle));
+  router.get("/add-vehicle", invController.accountType,utilities.handleErrors(invController.buildaddVehicle));
 router.post(
     "/add-vehicle",
     regValidatevehicle.registationRules(),
@@ -26,9 +26,9 @@ router.post(
     utilities.handleErrors(invController.registerVehicle)
   )
 
-  router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+  router.get("/getInventory/:classification_id", invController.accountType, utilities.handleErrors(invController.getInventoryJSON))
 
-  router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+  router.get("/edit/:inv_id", invController.accountType, utilities.handleErrors(invController.editInventoryView));
 
 
 
@@ -39,7 +39,7 @@ router.post(
     utilities.handleErrors(invController.updateInventory)
   )
 
-  router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView));
+  router.get("/delete/:inv_id", invController.accountType,utilities.handleErrors(invController.deleteInventoryView));
   router.post(
     "/delete/",
    utilities.handleErrors(invController.deleteInventory)

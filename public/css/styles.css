@@ -394,3 +394,11 @@ display: flex;
   color: red;
   list-style: none;
  }
+
+ .header-links{
+  font-size: larger;
+  font-weight: bold;
+  padding-top: 3%;
+  padding-right: 5%;
+  display: flex;
+ }

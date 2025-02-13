@@ -126,7 +126,6 @@ Util.buildClassificationList = async function (classification_id = null) {
 * Middleware to check token validity
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
-  console.log('entrou')
   if (req.cookies.jwt) {
    jwt.verify(
     req.cookies.jwt,
@@ -142,6 +141,7 @@ Util.checkJWTToken = (req, res, next) => {
      next()
     })
   } else {
+    res.locals.loggedin = 0
    next()
   }
  }
@@ -155,6 +155,15 @@ Util.checkJWTToken = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+
+ Util.getInvLink = async function (req, res, next) {
+ 
+  let link = '<div class="inventory-management">';
+  link += "<h2>Inventory Managemement</h2>"
+  link += "<a href='/inv'>Manage Inventory</a>"
+  link += "<div>"
+  return link
+}
   
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res , next)).catch(next)
 

@@ -247,7 +247,6 @@ invCont.deleteInventoryView = async function (req, res, next) {
 
 
 invCont.deleteInventory = async function (req, res, next) {
-  console.log('entrou no delete')
   let nav = await utilities.getNav()
   const {inv_id,} = req.body
   const deleteResult = await invModel.deleteInventory(inv_id)
@@ -260,7 +259,31 @@ invCont.deleteInventory = async function (req, res, next) {
     res.redirect("/inv/delete/inv_id")
     }
   }
+
+
+  invCont.accountType = async function (req, res, next) {
+    let account_type = res.locals.accountData?.account_type || ""; 
+
+    if (account_type === "employee" || account_type === "admin") {
+        next();
+    } else {
+        req.flash(
+            "notice",
+            `This must NOT be used when delivering the classification or detail views as they are meant for site visitors who may not be logged in.`
+        );
+
+        let nav = await utilities.getNav();
+        res.render("./account/login", {
+            title: "Login",
+            nav,
+            errors: null,
+        });
+    }
+};
+
+
  
+  
  
 
 module.exports = invCont
