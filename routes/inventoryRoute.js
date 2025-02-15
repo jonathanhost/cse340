@@ -30,6 +30,13 @@ router.post(
 
   router.get("/edit/:inv_id", invController.accountType, utilities.handleErrors(invController.editInventoryView));
 
+  router.get("/edit-classification", invController.accountType,utilities.handleErrors(invController.buildEditClassification));
+  router.post(
+    "/edit-classification/",
+    regValidate.registationRules(),
+    regValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateClassification)
+  )
 
 
   router.post(

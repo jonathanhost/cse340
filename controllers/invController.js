@@ -51,6 +51,17 @@ invCont.buildaddClassification = async function (req, res, next) {
     })
   }
 
+  invCont.buildEditClassification = async function (req, res, next) {
+    let classes = await utilities.buildClassificationList()
+    let nav = await utilities.getNav()
+    res.render("./inventory/edit-classification", {
+      title: "Edit Classification",
+      classes,
+      nav,
+      errors: null,
+    })
+  }
+
   invCont.buildaddVehicle = async function (req, res, next) {
     let nav = await utilities.getNav()
 
@@ -101,7 +112,6 @@ invCont.buildaddClassification = async function (req, res, next) {
   }
 
   invCont.registerClassification =  async function(req, res) {
-    console.log('entrou invCont.registerClassification ')
     let nav = await utilities.getNav()
     const { classification_name} = req.body
   
@@ -126,6 +136,40 @@ invCont.buildaddClassification = async function (req, res, next) {
       })
     }
   }
+
+
+  invCont.updateClassification = async function(req, res) {
+    let errors
+    let nav = await utilities.getNav()
+    let classes = await utilities.buildClassificationList()
+    const { classification_name, classification_id} = req.body
+    console.log(classification_name,classification_id)
+    const regResult = await invModel.updateClassification(
+      classification_name,classification_id
+    )
+  
+    if (regResult) {
+      req.flash(
+        "notice",
+        `Congratulations, you\'re updated ${classification_name}.`
+      )
+      res.status(201).render("inventory/edit-classification", {
+        title: "Vehicle Management",
+        errors,
+        classes,
+        nav,
+      })
+    } else {
+      req.flash("notice", "Sorry, the registration failed.")
+      res.status(501).render("inventory/dit-classification", {
+        title: "Vehicle Management",
+        errors,
+        classes,
+        nav,
+      })
+    }
+  }
+ 
 
   /* ***************************
  *  Return Inventory by Classification As JSON

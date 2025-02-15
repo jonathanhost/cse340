@@ -37,6 +37,27 @@ validate.checkRegData = async (req, res, next) => {
     }
     next()
   }
+
+
+  validate.checkUpdateData = async (req, res, next) => {
+    const { classification_name} = req.body
+    let classes = await utilities.buildClassificationList()
+    let errors = []
+    errors = validationResult(req)
+    console.log(errors)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("inventory/edit-classification", {
+        title: "Edit Classification",
+        nav,
+        classes,
+        errors: errors.array(),
+        classification_name
+      })
+      return
+    }
+    next()
+  }
   
   module.exports = validate
   

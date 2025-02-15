@@ -402,3 +402,13 @@ display: flex;
   padding-right: 5%;
   display: flex;
  }
+
+ .edit-classification label{
+  padding-top: 10%;
+
+ }
+
+ .edit-classification input{
+ width: 360px;
+
+ }

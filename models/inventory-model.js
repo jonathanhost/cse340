@@ -52,6 +52,16 @@ async function addClassification(classification_name){
 }
 
 
+async function updateClassification(classification_name, classification_id){
+  try { 
+    const sql = "UPDATE classification SET classification_name = $1 WHERE classification_id = $2 RETURNING  *"
+    return await pool.query(sql, [classification_name,classification_id])
+  } catch (error) {
+    return error.message
+  }
+}
+
+
 async function addVehicle( inv_make,
   inv_model,
   inv_year, 
@@ -150,4 +160,4 @@ async function deleteInventory(inv_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId,getInventoryByCarId,addClassification,addVehicle,updateInventory,deleteInventory};
+module.exports = {getClassifications, getInventoryByClassificationId,getInventoryByCarId,addClassification,addVehicle,updateInventory,deleteInventory,updateClassification};
